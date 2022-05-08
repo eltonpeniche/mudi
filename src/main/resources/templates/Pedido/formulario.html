@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	
+	<head th:replace = "~{base :: head}">
+	
+	<body>
+		
+		<div  th:replace = "~{base :: logo}"></div>
+		
+		<div class="container">
+			<div  th:replace = "~{base :: titulo('Novo Pedido')}"></div>
+			
+			<nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
+				<div class="navbar-nav">
+					<a class="nav-link" href="/home">Todos</a>
+					<a class="nav-link" href="">Aguardando</a>
+					<a class="nav-link" href="">Aprovado </a>
+					<a class="nav-link" href="">Entregue</a>
+				</div>	
+					<a class="active" href="/pedido/formulario">
+						<button class="btn btn-outline-secondary">Novo</button>
+					</a>
+			</nav>
+			
+			
+			<div class="card">
+				<form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo"  method="POST">
+				  <div class="mb-3">
+				    <label for="nomeProduto" class="form-label">Produto</label>
+				    <input th:field="*{nomeProduto}" th:errorclass="is-invalid" type="text" class="form-control" placeholder="nome do produto" />
+				   	<div th:errors="*{nomeProduto}" class="invalid-feedback" ></div>	
+				  </div>
+				 
+					<div class="mb-3">
+				    <label for="urlProduto" class="form-label">URL</label>
+				    <input th:field="*{urlProduto}" th:errorclass="is-invalid"  type="text" class="form-control" placeholder="url do produto" >
+				    <div th:errors="*{urlProduto}" class="invalid-feedback"></div>	
+				  </div>
+				  
+				  <div class="mb-3">
+				    <label for="urlimagem" class="form-label">Imagem</label>
+				    <input th:field="*{urlimagem}" th:errorclass="is-invalid" type="text" class="form-control" placeholder="url da imagem" >
+				    <div th:errors="*{urlimagem}" class="invalid-feedback"></div>	
+				  </div>
+				  
+				  <div class="mb-3">
+				    <label for="descricao" class="form-label">Descrição</label>
+				    <textarea th:field="*{descricao}" th:errorclass="is-invalid" class="form-control" placeholder="adicione detalhes importantes"> </textarea>
+				    <div th:errors="*{descricao}" class="invalid-feedback"></div>	
+				  </div>
+				 
+				 <div class="d-flex justify-content-end">
+				  	<button type="submit" class="btn btn-primary ">Cadastrar</button>
+				  </div>
+				</form>
+			</div>				
+	
+		</div>
+
+	</body>
+
+
+
+</html>
