@@ -6,7 +6,9 @@
 		<div  th:replace = "~{base :: logo}"></div>
 		
 		<div class="container">
-			<div  th:replace = "~{base :: titulo('Meus Pedidos')}"></div>
+			
+			<div th:replace="base::titulo ('Meus Pedidos', ${status2})">...</div>
+			
 			
 			<nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
 				<div class="navbar-nav">

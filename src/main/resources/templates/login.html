@@ -1,0 +1,42 @@
+<html>
+<head th:replace="~{base :: head}">
+</head>
+
+<body>
+	<div th:replace="~{base :: logo}"></div>
+
+	<div class="container">
+
+		<div th:replace="base::titulo ('Login', ${status2})">...</div>
+
+
+
+		<div class="card mb-3 mt-3">
+			
+			<form th:action="@{/login}" method="post" class="card-body">
+				<div class="form-group mb-3">
+				 	<label for="username" class="form-label">Login</label>
+				    <input name = "username" type="text" class="form-control" placeholder="nome do usuário" />
+				   
+				</div>
+				<div class="form-group mb-3">
+					<label for="password" class="form-label">Senha</label>
+				    <input name="password" type="password" class="form-control" placeholder="Senha" />
+				   
+				</div>
+				<div class="d-flex justify-content-end">
+				  	<button type="submit" class="btn btn-primary ">Entrar</button>
+				  </div>
+			</form>
+
+
+
+
+		</div>
+	</div>
+
+</body>
+
+
+
+</html>
