@@ -2,7 +2,9 @@ package br.com.peniche.mvc.mudi.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Pedido {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	private String nomeProduto;
 	private BigDecimal valorNegociado;
 	private LocalDate dataDaEntrega;
@@ -31,6 +35,23 @@ public class Pedido {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	private User user;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
+	private List <Oferta> ofertas;
+	
+	@JsonIgnore
+	public List<Oferta> getOfertas() {
+		return ofertas;
+	}
+	public void setOfertas(List<Oferta> ofertas) {
+		this.ofertas = ofertas;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 	public User getUser() {
 		return user;
